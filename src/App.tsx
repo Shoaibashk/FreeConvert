@@ -68,10 +68,10 @@ function App() {
 
       "output." + targetFormat,
     ]);
-    const data = await ffmpeg.readFile("output." + targetFormat);
+    const data: FileData = await ffmpeg.readFile("output." + targetFormat);
 
     setIsDone(true);
-    const convertedBlob = new Blob([data.buffer as FileData], {
+    const convertedBlob = new Blob([data as FileData], {
       type: "video/" + targetFormat,
     });
     setConvertedVideoURL(URL.createObjectURL(convertedBlob));
