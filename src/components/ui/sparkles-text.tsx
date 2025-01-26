@@ -102,26 +102,28 @@ const SparklesText: React.FC<SparklesTextProps> = ({
     const interval = setInterval(updateStars, 100);
 
     return () => clearInterval(interval);
-  }, [colors.first, colors.second]);
+  }, [colors.first, colors.second, sparklesCount]);
 
   return (
-    <div
-      className={cn("text-2xl font-bold", className)}
-      {...props}
-      style={
-        {
-          "--sparkles-first-color": `${colors.first}`,
-          "--sparkles-second-color": `${colors.second}`,
-        } as CSSProperties
-      }
-    >
-      <span className="relative inline-block">
-        {sparkles.map((sparkle) => (
-          <Sparkle key={sparkle.id} {...sparkle} />
-        ))}
-        <strong>{text}</strong>
-      </span>
-    </div>
+    <>
+      <div
+        className={cn("text-2xl font-bold", className)}
+        {...props}
+        style={
+          {
+            "--sparkles-first-color": `${colors.first}`,
+            "--sparkles-second-color": `${colors.second}`,
+          } as CSSProperties
+        }
+      >
+        <span className="relative inline-block">
+          {sparkles.map((sparkle) => (
+            <Sparkle key={sparkle.id} {...sparkle} />
+          ))}
+          <strong>{text}</strong>
+        </span>
+      </div>{" "}
+    </>
   );
 };
 
