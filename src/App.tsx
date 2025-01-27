@@ -5,18 +5,20 @@ import Dropzone from "@/components/ui/dropzone";
 import { FFmpeg, FileData } from "@ffmpeg/ffmpeg";
 import { useEffect, useRef, useState } from "react";
 import { fetchFile, toBlobURL } from "@ffmpeg/util";
-
+import ffmpegCore from "@/assets/ffmpeg-core.js?url";
+import ffmpegCoreWasm from "@/assets/ffmpeg-core.wasm?url";
+import ffmpegCoreWorker from "@/assets/ffmpeg-core.worker.js?url";
 // import { useRef } from "react";
 import { CircleX } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Infinite from "./components/ui/spinner";
+import Infinite from "@/components/ui/spinner";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./components/ui/select";
+} from "@/components/ui/select";
 // import { Confetti, ConfettiRef } from "./components/ui/confetti";
 
 function App() {
@@ -32,7 +34,7 @@ function App() {
   const [isDone, setIsDone] = useState(false);
 
   const load = async () => {
-    const baseURL = "https://unpkg.com/@ffmpeg/core-mt@0.12.9/dist/esm";
+    // const baseURL = "https://unpkg.com/@ffmpeg/core-mt@0.12.9/dist/esm";
     const ffmpeg = ffmpegRef.current;
     ffmpeg.on("progress", ({ progress, time }) => {
       messageRef!.current!.innerHTML = `${progress * 100} % (transcoded time: ${
@@ -41,15 +43,14 @@ function App() {
     });
 
     await ffmpeg.load({
-      coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, "text/javascript"),
-      wasmURL: await toBlobURL(
-        `${baseURL}/ffmpeg-core.wasm`,
-        "application/wasm"
-      ),
-      workerURL: await toBlobURL(
-        `${baseURL}/ffmpeg-core.worker.js`,
-        "text/javascript"
-      ),
+      // coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, "text/javascript"),
+      coreURL: await toBlobURL(ffmpegCore, "text/javascript"),
+      // wasmURL: await toBlobURL(
+      //   `${baseURL}/ffmpeg-core.wasm`,
+      //   "application/wasm"
+      // ),
+      wasmURL: await toBlobURL(ffmpegCoreWasm, "application/wasm"),
+      workerURL: await toBlobURL(ffmpegCoreWorker, "text/javascript"),
     });
     setLoaded(true);
   };
@@ -63,8 +64,8 @@ function App() {
     await ffmpeg.exec([
       "-i",
       "input." + uploadedFileFormat,
-      "-c:v",
-      "libx264",
+      // "-c:v",
+      // "libx264",
 
       "output." + targetFormat,
     ]);
