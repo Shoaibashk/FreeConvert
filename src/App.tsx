@@ -49,7 +49,12 @@ function App() {
       //   "application/wasm"
       // ),
       wasmURL: await toBlobURL(ffmpegCoreWasm, "application/wasm"),
-      workerURL: await toBlobURL("/ffmpeg-core.worker.js", "text/javascript"),
+      workerURL: await toBlobURL(
+        import.meta.env.DEV
+          ? `/ffmpeg-core.worker.js`
+          : `${import.meta.env.BASE_URL}ffmpeg-core.worker.js`,
+        "text/javascript"
+      ),
     });
     setLoaded(true);
   };
