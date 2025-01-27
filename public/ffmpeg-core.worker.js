@@ -52,7 +52,7 @@ function handleMessage(e) {
       Module["ENVIRONMENT_IS_PTHREAD"] = true;
       (e.data.urlOrBlob
         ? import(e.data.urlOrBlob)
-        : import("./ffmpeg-core.js")
+        : import("../src/assets/ffmpeg-core.js")
       ).then((exports) => exports.default(Module));
     } else if (e.data.cmd === "run") {
       Module["__emscripten_thread_init"](e.data.pthread_ptr, 0, 0, 1);

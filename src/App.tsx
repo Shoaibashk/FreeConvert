@@ -7,7 +7,6 @@ import { useEffect, useRef, useState } from "react";
 import { fetchFile, toBlobURL } from "@ffmpeg/util";
 import ffmpegCore from "@/assets/ffmpeg-core.js?url";
 import ffmpegCoreWasm from "@/assets/ffmpeg-core.wasm?url";
-import ffmpegCoreWorker from "@/assets/ffmpeg-core.worker.js?url";
 // import { useRef } from "react";
 import { CircleX } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -50,7 +49,7 @@ function App() {
       //   "application/wasm"
       // ),
       wasmURL: await toBlobURL(ffmpegCoreWasm, "application/wasm"),
-      workerURL: await toBlobURL(ffmpegCoreWorker, "text/javascript"),
+      workerURL: await toBlobURL("/ffmpeg-core.worker.js", "text/javascript"),
     });
     setLoaded(true);
   };
