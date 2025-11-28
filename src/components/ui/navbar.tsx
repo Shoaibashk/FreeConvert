@@ -5,7 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, Moon, Sun, Download, Github } from "lucide-react";
+import { Menu, Moon, Sun, Download, Github, Monitor } from "lucide-react";
 import { useTheme } from "@/hooks/useTheme";
 import { usePWA } from "@/hooks/usePWA";
 import { motion } from "framer-motion";
@@ -71,7 +71,7 @@ export default function Navbar() {
                   {theme === 'dark' && <span className="ml-auto">✓</span>}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme('system')}>
-                  <span className="mr-2">💻</span>
+                  <Monitor className="mr-2 h-4 w-4" />
                   <span>System</span>
                   {theme === 'system' && <span className="ml-auto">✓</span>}
                 </DropdownMenuItem>

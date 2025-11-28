@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 
 type Theme = 'light' | 'dark' | 'system';
 
@@ -11,6 +11,8 @@ export function useTheme() {
   });
 
   const applyTheme = useCallback((newTheme: Theme) => {
+    if (typeof window === 'undefined') return;
+    
     const root = document.documentElement;
     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     const effectiveTheme = newTheme === 'system' ? systemTheme : newTheme;
@@ -24,6 +26,8 @@ export function useTheme() {
   }, [theme, applyTheme]);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = () => {
       if (theme === 'system') {
@@ -37,11 +41,16 @@ export function useTheme() {
 
   const setTheme = useCallback((newTheme: Theme) => {
     setThemeState(newTheme);
-    localStorage.setItem('theme', newTheme);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('theme', newTheme);
+    }
     applyTheme(newTheme);
   }, [applyTheme]);
 
-  const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const isDark = useMemo(() => {
+    if (typeof window === 'undefined') return false;
+    return theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }, [theme]);
 
   return { theme, setTheme, isDark };
 }
