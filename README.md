@@ -1,50 +1,121 @@
-# React + TypeScript + Vite
+# 🎬 FreeConvert
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Free, private, and fast video converter that works entirely in your browser using FFmpeg WebAssembly.
 
-Currently, two official plugins are available:
+[![GitHub License](https://img.shields.io/github/license/Shoaibashk/FreeConvert)](LICENSE)
+[![Deploy](https://github.com/Shoaibashk/FreeConvert/actions/workflows/deploy.yml/badge.svg)](https://github.com/Shoaibashk/FreeConvert/actions/workflows/deploy.yml)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- **🔒 100% Private** - Your files never leave your device. All processing happens locally in your browser.
+- **⚡ Lightning Fast** - Powered by FFmpeg WebAssembly for near-native performance.
+- **📱 Responsive Design** - Modern UI that works seamlessly on desktop and mobile devices.
+- **📲 Installable PWA** - Install as a Progressive Web App and use offline.
+- **🌙 Dark Mode** - Toggle between light and dark themes.
+- **🎥 Multiple Formats** - Convert between MP4, MOV, AVI, MKV, and WEBM.
+- **💾 No Upload Required** - Convert files up to 50GB without uploading to any server.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🚀 Getting Started
 
-- Configure the top-level `parserOptions` property like this:
+### Prerequisites
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Node.js 18+
+- npm or pnpm
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/Shoaibashk/FreeConvert.git
+cd FreeConvert
+
+# Install dependencies
+npm install
+# or
+pnpm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Development
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+# Start development server
+npm run dev
+# or
+pnpm dev
 ```
+
+The app will be available at `http://localhost:5173`
+
+### Build
+
+```bash
+# Build for production
+npm run build
+# or
+pnpm build
+```
+
+### Deploy
+
+```bash
+# Deploy to GitHub Pages
+npm run deploy
+# or
+pnpm deploy
+```
+
+## 🛠️ Tech Stack
+
+- **React 18** - UI framework
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Next-generation frontend tooling
+- **Tailwind CSS** - Utility-first CSS framework
+- **FFmpeg WASM** - WebAssembly port of FFmpeg for video processing
+- **Framer Motion** - Animation library
+- **Radix UI** - Unstyled, accessible components
+- **vite-plugin-pwa** - PWA support with Workbox
+
+## 📱 PWA Support
+
+FreeConvert is a fully-featured Progressive Web App:
+
+- **Installable** - Click "Install App" in the navigation to install on your device
+- **Offline Support** - Works without internet connection after installation
+- **Fast Loading** - Service worker caches assets for instant loading
+
+## 🔐 Privacy
+
+FreeConvert is designed with privacy in mind:
+
+- All video processing happens locally in your browser using WebAssembly
+- No files are ever uploaded to any server
+- No analytics or tracking
+- No user data collection
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Author
+
+**Shoaibashk**
+
+- Website: [shoaibashk.github.io](https://shoaibashk.github.io)
+- GitHub: [@Shoaibashk](https://github.com/Shoaibashk)
+
+## 🙏 Acknowledgments
+
+- [FFmpeg](https://ffmpeg.org/) - The powerful multimedia framework
+- [FFmpeg.wasm](https://github.com/ffmpegwasm/ffmpeg.wasm) - FFmpeg WebAssembly port
+- [Vite](https://vitejs.dev/) - The blazing fast build tool
+- [shadcn/ui](https://ui.shadcn.com/) - Beautiful UI components
