@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('https://shoaib.bitsea.co.in/FreeConvert/sw.js', { scope: 'https://shoaib.bitsea.co.in/FreeConvert/' })})}
